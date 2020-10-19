@@ -1,40 +1,49 @@
 #include <stdio.h>
 #include <math.h>
 
-double my_acosh(double x, int n)
+double my_sin(double x, int n)
 {
-    double result = log(2 * x);
+    // double result = log(2 * x);
     double sum = 0;
+    double fact = 1;
+    double exp = x;
 
-    double n_fact = 1;
-    double n2_fact = 1;
-
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i <= n; i++)
     {
-        n2_fact *= (2 * i - 1) * (2 * i);
-        n_fact *= i;
+        fact *= i == 0 ? 1.0 : (2 * i) * (2 * i + 1);
+        exp *= i == 0 ? 1 : x * x;
 
-        sum += (n2_fact / ((2 << (2 * i - 1)) * n_fact * n_fact)) * ((pow(x, -2 * i)) / (2 * i));
+        sum += (exp / fact) * (i % 2 == 0 ? 1 : -1);
+        // printf("exp(%lf, %d)=%lf\n", x, i, exp);
     }
 
-    return result - sum;
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     n2_fact *= (2 * i - 1) * (2 * i);
+    //     n_fact *= i;
+
+    //     sum += (n2_fact / ((2 << (2 * i - 1)) * n_fact * n_fact)) * ((pow(x, -2 * i)) / (2 * i));
+    // }
+
+    return sum;
 }
 
 void get_x(double *x)
 {
     do
     {
-        printf("Введите значени для x (x > 1.0): ");
+        printf("Введите значени для x : ");
         scanf("%lf", x);
     } while (*x <= 1.0);
 }
+
 void get_n(int *n)
 {
     do
     {
-        printf("Введите значени для n (n >= 1): ");
+        printf("Введите значени для n (n >= 0): ");
         scanf("%d", n);
-    } while (*n < 1);
+    } while (*n < 0);
 }
 
 int main()
@@ -43,8 +52,8 @@ int main()
     int n;
     char willContinue = 'y';
 
-    printf("Программа считает значение функции acosh(x)\n");
-    printf("используя разложение в ряд Маклорена до n элемента\n\n");
+    printf("Программа считает значение функции sin(x)\n");
+    printf("используя разложение в ряд Маклорена до n-го элемента\n\n");
     do
     {
         get_x(&x);
@@ -52,8 +61,8 @@ int main()
 
         printf("\nx = %f\nn = %d\n\n", x, n);
 
-        printf("my_acosh(%lf) = %lf\n", x, my_acosh(x, n));
-        printf("acosh(%lf) = %lf\n", x, acosh(x));
+        printf("my_sin(%lf) = %lf\n", x, my_sin(x, n));
+        printf("sin(%lf) = %lf\n", x, sin(x));
 
         printf("\nНачать заново? (y/n): ");
         scanf("\r%c", &willContinue);
