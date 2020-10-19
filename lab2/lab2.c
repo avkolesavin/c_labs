@@ -3,7 +3,6 @@
 
 double my_sin(double x, int n)
 {
-    // double result = log(2 * x);
     double sum = 0;
     double fact = 1;
     double exp = x;
@@ -14,16 +13,7 @@ double my_sin(double x, int n)
         exp *= i == 0 ? 1 : x * x;
 
         sum += (exp / fact) * (i % 2 == 0 ? 1 : -1);
-        // printf("exp(%lf, %d)=%lf\n", x, i, exp);
     }
-
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     n2_fact *= (2 * i - 1) * (2 * i);
-    //     n_fact *= i;
-
-    //     sum += (n2_fact / ((2 << (2 * i - 1)) * n_fact * n_fact)) * ((pow(x, -2 * i)) / (2 * i));
-    // }
 
     return sum;
 }
