@@ -1,8 +1,7 @@
-.vscode
-
-tests
-
 *
 !/*
 !/*/*
 !/*/*/*.c
+
+.vscode
+tests
