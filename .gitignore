@@ -5,6 +5,7 @@
 
 !*.[cho]
 !*.task
+!Makefile*
 
 .vscode
 tests

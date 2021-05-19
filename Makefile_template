@@ -1,0 +1,11 @@
+DEPS=../utils.c
+PWD=$(shell PWD)
+EXECUTABLE=$(shell basename "$(shell PWD)")
+
+all: run
+
+$(EXECUTABLE): $(EXECUTABLE).c
+	gcc $(DEPS) $? -o $@
+
+run: $(EXECUTABLE)
+	./$(EXECUTABLE)
