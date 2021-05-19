@@ -1,7 +1,10 @@
 *
-!/*
-!/*/*
-!/*/*/*.c
+!.gitignore
+
+!/**/
+
+!*.[cho]
+!*.task
 
 .vscode
 tests
