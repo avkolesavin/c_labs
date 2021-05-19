@@ -125,4 +125,6 @@ int main()
 
     free(originMatrix);
     free(resultMatrix);
+
+    return 0;
 }
