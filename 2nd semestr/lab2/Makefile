@@ -1,4 +1,4 @@
-DEPS=../utils.c
+DEPS=../utils.c ./list.c
 PWD=$(shell PWD)
 EXECUTABLE=$(shell basename "$(shell PWD)")
 
@@ -9,3 +9,6 @@ $(EXECUTABLE): $(EXECUTABLE).c $(DEPS)
 
 run: $(EXECUTABLE)
 	./$(EXECUTABLE)
+
+leak: $(EXECUTABLE)
+	valgrind ./$(EXECUTABLE)
